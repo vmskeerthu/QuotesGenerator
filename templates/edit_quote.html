@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Quote</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Quote</h1>
+        <form method="POST">
+            <label for="quote">Quote:</label>
+            <textarea name="quote" id="quote" required>{{ quote['text'] }}</textarea><br>
+            <label for="author">Author:</label>
+            <input type="text" name="author" id="author" required value="{{ quote['author'] }}"><br>
+            <button class="button" type="submit">Update Quote</button>
+        </form><br>
+        <a class="button" href="/view_all">Back to All Quotes</a>
+    </div>
+</body>
+</html>
