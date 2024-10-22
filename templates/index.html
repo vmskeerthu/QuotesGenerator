@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Quote Generator</title>
+    <title>Random Quote</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Random Quote Generator</h1>
+        <h1>Random Quote</h1>
         <blockquote>
-            "{{ quote['text'] }}"
-            <footer>- {{ quote['author'] }}</footer>
+            "{{ quote['text'] }}" <br> - {{ quote['author'] }}
         </blockquote>
-        <div class="button-container">
-            <a class="button" href="/">Get Another Quote</a>
-            <a class="button" href="/add">Add a Quote</a>
-        </div>
+        <a class="button" href="/view_all">View All Quotes</a>
+        <a class="button" href="/add">Add New Quote</a>
+        <a class="button" href="/search">Search Quotes</a>
     </div>
 </body>
 </html>
+
