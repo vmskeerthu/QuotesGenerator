@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Quotes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Search Quotes</h1>
+        <form method="POST">
+            <label for="search">Search Term:</label>
+            <input type="text" name="search" id="search" required><br>
+            <button class="button" type="submit">Search</button>
+        </form><br>
+        <a class="button" href="/">Home</a>
+    </div>
+</body>
+</html>
