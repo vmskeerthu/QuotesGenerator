@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Random Quote</h1>
+        <blockquote>{{ quote['text'] }}</blockquote>
+        <footer>- {{ quote['author'] }}</footer>
+        <a class="button" href="/random/refresh">Show Another Quote</a>
+        <a class="button" href="/">Home</a>
+    </div>
+</body>
+</html>
