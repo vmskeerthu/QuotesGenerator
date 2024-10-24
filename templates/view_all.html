@@ -9,17 +9,22 @@
 <body>
     <div class="container">
         <h1>All Quotes</h1>
-        {% for quote in quotes %}
-            <blockquote>{{ quote['text'] }}</blockquote>
-            <footer>- {{ quote['author'] }}</footer>
-            <a class="button" href="/edit/{{ quote['_id'] }}">Edit</a>
-            <form action="/delete/{{ quote['_id'] }}" method="POST" style="display:inline;">
-                <button class="button" type="submit">Delete</button>
-            </form><br><br>
-        {% endfor %}
 
-        <a class="button" href="/add">Add a Quote</a>
-        <a class="button" href="/">Home</a>
+        {% for quote in quotes %}
+    <blockquote>{{ quote['text'] }}</blockquote>
+    <footer>- {{ quote['author'] }} {% if quote.get('favorite', False) %}(Favorite){% endif %}</footer>
+    <a class="button" href="/edit/{{ quote['_id'] }}">Edit</a>
+    <form action="/delete/{{ quote['_id'] }}" method="POST" style="display:inline;">
+        <button class="button" type="submit">Delete</button>
+    </form>
+    <form action="/toggle_favorite/{{ quote['_id'] }}" method="POST" style="display:inline;">
+        <button class="button" type="submit">{% if quote.get('favorite', False) %}Unfavorite{% else %}Favorite{% endif %}</button>
+    </form><br><br>
+{% endfor %}
+
+        <a class="button" href="/add">Add a Quote</a>&nbsp;
+        <a class="button" href="/">Home</a>&nbsp;
+        <a class="button" href="/favorites">Favorite Quotes</a>
     </div>
 </body>
 </html>
