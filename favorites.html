@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Quotes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Favorite Quotes</h1>
+        {% if quotes %}
+            {% for quote in quotes %}
+                <blockquote>{{ quote['text'] }}</blockquote>
+                <footer>- {{ quote['author'] }}</footer>
+                <form action="/favorite/{{ quote['_id'] }}" method="POST" style="display:inline;">
+                    <button class="button" type="submit">Unfavorite</button>
+                </form>
+                <a class="button" href="/edit/{{ quote['_id'] }}">Edit</a>
+                <form action="/delete/{{ quote['_id'] }}" method="POST" style="display:inline;">
+                    <button class="button" type="submit">Delete</button>
+                </form><br><br>
+            {% endfor %}
+        {% else %}
+            <p>No favorite quotes found!</p>
+        {% endif %}
+        <a class="button" href="/view_all">View All Quotes</a>
+        <a class="button" href="/">Home</a>
+    </div>
+</body>
+</html>
