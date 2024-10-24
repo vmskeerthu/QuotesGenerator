@@ -60,6 +60,29 @@ def delete_quote(quote_id):
     quotes_collection.delete_one({"_id": ObjectId(quote_id)})
     flash("Quote deleted successfully!")
     return redirect(url_for('view_all'))
+@app.route('/toggle_favorite/<quote_id>', methods=['POST'])
+def toggle_favorite(quote_id):
+    quote = quotes_collection.find_one({"_id": ObjectId(quote_id)})
+    if quote:
+        new_favorite_status = not quote.get('favorite', False)  # Toggle the favorite status
+        quotes_collection.update_one({"_id": ObjectId(quote_id)}, {"$set": {"favorite": new_favorite_status}})
+        flash("Favorite status updated successfully!")
+    return redirect(url_for('view_all'))
+
+
+@app.route('/favorite/<quote_id>', methods=['POST'])
+def favorite_quote(quote_id):
+    quote = quotes_collection.find_one({"_id": ObjectId(quote_id)})
+    if quote:
+        new_favorite_status = not quote.get('favorite', False)
+        quotes_collection.update_one({"_id": ObjectId(quote_id)}, {"$set": {"favorite": new_favorite_status}})
+        flash("Quote favorite status updated!")
+    return redirect(url_for('view_all'))
+
+@app.route('/favorites')
+def view_favorites():
+    favorite_quotes = list(quotes_collection.find({"favorite": True}))
+    return render_template('favorites.html', quotes=favorite_quotes)
 
 @app.route('/search', methods=['GET', 'POST'])
 def search_quotes():
@@ -75,4 +98,3 @@ def search_quotes():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
