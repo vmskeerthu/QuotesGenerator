@@ -1,7 +1,7 @@
 
                 <a class="button" href="/edit/{{ quote['_id'] }}">Edit</a>
                 <form action="/delete/{{ quote['_id'] }}" method="POST" style="display:inline;">
-                    <button class="button" type="submit">Delete</button>
+                    <button class="button" type=submit">Delete</button>
                 </form><br><br>
             {% endfor %}
         {% else %}
