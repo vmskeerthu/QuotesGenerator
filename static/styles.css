@@ -32,10 +32,9 @@ body {
     text-align: center;
     width: 400px;
     max-width: 90%;
-    max-height: 90vh; /* Added for scrollable content */
-    overflow-y: auto; /* Allows scrolling if content exceeds the height */
+    max-height: 90vh; 
+    overflow-y: auto; 
 }
-
 
 h1 {
     color: #6a0dad;
